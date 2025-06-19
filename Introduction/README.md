@@ -48,3 +48,17 @@ Despite its power, JavaScript has some limitations to consider:
 * Performance : JavaScript is slower than traditional languages for complex tasks, but for simple tasks in a browser, performance is usually not a major issue.
 * Complexity : To write advanced JavaScript, programmers need to understand core programming concepts, objects, and both client- and server-side scripting, which can be challenging.
 * Weak Error Handling and Type Checking : JavaScript is weakly typed, meaning variables don’t require explicit types. This can lead to issues as type checking is not strictly enforced.
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Is JavaScript Compiled or Interpreted or both ?
+JavaScript is both compiled and interpreted. The V8 engine improves performance by first interpreting code and then compiling frequently used functions for speed. This makes JavaScript efficient for modern web apps. It’s mainly used for web development but also works in other environments. You can learn it through tutorials and examples.
+
+Just-In-Time (JIT) compilation is a technique used by JavaScript engines (like V8) to improve performance. Here’s how it works
+
+Interpretation: Initially, the code is interpreted line-by-line by the engine.
+Hot Code Detection: The engine identifies frequently executed code, such as often-called functions.
+Compilation: The “hot” code is compiled into optimized machine code for faster execution.
+Execution: The compiled machine code is then executed directly, improving performance compared to repeated interpretation.
+JIT compilation balances between interpretation (for quick startup) and compilation (for faster execution).
