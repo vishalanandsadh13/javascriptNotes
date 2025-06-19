@@ -40,3 +40,11 @@ JavaScript is used in a wide range of applications, from enhancing websites to b
 * Smartwatches: Pebble JS allows JavaScript to run on smartwatches, supporting apps that require internet connectivity.
 
 ---------------------------------------------------------------------------------------------------------------------------
+
+Limitations of JavaScript
+Despite its power, JavaScript has some limitations to consider:
+
+* Security Risks : JavaScript can be used for attacks like Cross-Site Scripting (XSS), where malicious scripts are injected into a website to steal data by exploiting elements like <img>, <object>, or <script> tags.
+* Performance : JavaScript is slower than traditional languages for complex tasks, but for simple tasks in a browser, performance is usually not a major issue.
+* Complexity : To write advanced JavaScript, programmers need to understand core programming concepts, objects, and both client- and server-side scripting, which can be challenging.
+* Weak Error Handling and Type Checking : JavaScript is weakly typed, meaning variables don’t require explicit types. This can lead to issues as type checking is not strictly enforced.
