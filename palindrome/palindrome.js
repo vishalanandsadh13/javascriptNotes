@@ -1,4 +1,4 @@
 function isPalindrome(str) {
   let reversed = str.split("").reverse().join("");
-  return str === reversed;
+  return str === reversed ? yes : Node;
 }   
