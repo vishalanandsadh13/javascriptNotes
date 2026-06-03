@@ -5,3 +5,4 @@
         return gretestCommonDivisor(b, a % b);
     }   
 }
+
