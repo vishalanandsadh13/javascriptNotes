@@ -1,0 +1,151 @@
+1. What are the possible ways to create objects in JavaScript
+There are many ways to create objects in javascript as mentioned below:
+
+
+1. Object literal syntax:
+The object literal syntax (or object initializer), is a comma-separated set of name-value pairs
+wrapped in curly braces.
+var object = {
+name: "Sudheer",
+age: 34,
+};
+Object literal property values can be of any data type, including array, function, and nested
+object.
+Note: This is one of the easiest ways to create an object and it's most commonly used for
+creating simple, ad-hoc objects.
+2. Object constructor:
+The simplest way to create an empty object is using the 
+Object
+ constructor. Currently this
+approach is not recommended.
+var object = new Object();
+The 
+Object()
+ is a built-in constructor function so "new" keyword is not required for
+creating plain objects. The above code snippet can be re-written as:
+var object = Object();
+However, 
+Object()
+ can be used to either create a plain object or convert a given value into
+its corresponding object wrapper, whereas 
+new Object()
+ is specifically used to explicitly
+create a new object instance.
+3. Object's create method:
+17 / 223
+JavaScript_MohitDecodes.md
+2026-05-20
+The 
+create
+ method of Object is used to create a new object by passing the specified
+prototype object and properties as arguments, i.e., this pattern is helpful to create new
+objects based on existing objects. In other words, this is useful for setting up prototypal
+inheritance. The second argument is optional and it is used to create properties on a newly
+created object.
+The following code creates a new empty object whose prototype is null.
+var object = Object.create(null);
+The following example creates an object along with additional new properties.
+let vehicle = {
+wheels: "4",
+fuelType: "Gasoline",
+color: "Green",
+};
+let carProps = {
+type: {
+value: "Volkswagen",
+},
+model: {
+value: "Golf",
+},
+};
+var car = Object.create(vehicle, carProps);
+console.log(car);
+4. Function constructor:
+In this approach, create any function and apply the new operator to create object instances.
+This was the main way to do constructor-based OOP before ES6 classes.
+function Person(name) {
+this.name = name;
+this.age = 21;
+}
+var object = new Person("Sudheer");
+5. Function constructor with prototype:
+This is similar to function constructor but it uses prototype for their properties and methods.
+Using prototype means you're sharing methods/properties across instances, which saves
+memory and improve performance.
+18 / 223
+JavaScript_MohitDecodes.md
+2026-05-20
+function Person() {}
+Person.prototype.name = "Sudheer";
+var object = new Person();
+This is equivalent to creating an instance with 
+Object.create
+ method with a function
+prototype and then calling that function with an instance and parameters as arguments.
+function func(x, y, z) {
+this.x = x;
+this.y = y;
+this.z = z;
+}
+var instance = new func(1, 2, 3);
+(OR)
+function func(x, y, z) {
+this.x = x;
+this.y = y;
+this.z = z;
+}
+// Create a new instance using function prototype.
+var newInstance = Object.create(func.prototype);
+// Call the function
+var result = func.call(newInstance, 1, 2, 3);
+// If the result is a non-null object then use it otherwise just 
+use the new instance.
+console.log(result && typeof result === 'object' ? result : 
+newInstance);
+6. Object's assign method:
+The 
+Object.assign
+ method is used to copy all the properties from one or more source
+objects and stores them into a target object. This is mainly used for cloning and merging
+The following code creates a new staff object by copying properties of his working company
+and the car he owns.
+const orgObject = { company: "XYZ Corp" };
+const carObject = { name: "Toyota" };
+const staff = Object.assign({}, orgObject, carObject);
+19 / 223
+JavaScript_MohitDecodes.md
+2026-05-20
+7. ES6 Class syntax:
+ES6 introduces class feature to create objects. This is syntactic sugar over the prototype
+based system.
+class Person {
+constructor(name) {
+this.name = name;
+}
+}
+var object = new Person("Sudheer");
+8. Singleton pattern:
+A Singleton is an object which can only be instantiated one time. Repeated calls to its
+constructor return the same instance. This way one can ensure that they don't accidentally
+create multiple instances.
+Singleton with Closure (Classic JS Pattern)
+const Singleton = (function () {
+let instance;
+function createInstance() {
+return { name: "Sudheer" };
+}
+return {
+getInstance: function () {
+if (!instance) {
+instance = createInstance();
+}
+return instance;
+}
+};
+})();
+// Usage
+const obj1 = Singleton.getInstance();
+const obj2 = Singleton.getInstance();
+console.log(obj1 === obj2); // true
+In modern JavaScript applications, singletons are commonly implemented using ES6
+modules for their built-in caching behavior, or closures for encapsulated state management.
