@@ -149,3 +149,47 @@ const obj2 = Singleton.getInstance();
 console.log(obj1 === obj2); // true
 In modern JavaScript applications, singletons are commonly implemented using ES6
 modules for their built-in caching behavior, or closures for encapsulated state management.
+
+
+
+
+2. What is a prototype chain
+The prototype chain is a core concept in JavaScriptʼs inheritance model. It allows objects to inherit
+properties and methods from other objects. When you try to access a property or method on an
+object, JavaScript first looks for it on that object itself. If itʼs not found, the engine looks up the
+object's internal 
+[[Prototype]]
+ reference (accessible via 
+Object.getPrototypeOf(obj)
+ or
+the deprecated 
+__proto__
+ property) and continues searching up the chain until it finds the
+property or reaches the end (usually 
+null
+).
+For objects created via constructor functions, the prototype chain starts with the instance, then
+refers to the constructorʼs 
+.prototype
+ object, and continues from there. For example:
+function Person() {}
+const person1 = new Person();
+console.log(Object.getPrototypeOf(person1) === Person.prototype); // 
+true
+This mechanism allows for property and method sharing among objects, enabling code reuse and a
+form of inheritance.
+Summary:
+The prototype chain enables inheritance in JavaScript.
+If a property isnʼt found on an object, JavaScript looks up its prototype chain.
+The prototype of an object instance can be accessed with 
+Object.getPrototypeOf(obj)
+or 
+__proto__
+.
+The prototype of a constructor function is available via 
+Constructor.prototype
+.
+The chain ends when the prototype is 
+null
+.
+The prototype chain among objects appears as below
