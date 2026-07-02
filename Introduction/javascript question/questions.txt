@@ -193,3 +193,26 @@ The chain ends when the prototype is
 null
 .
 The prototype chain among objects appears as below
+
+
+What is JSON and its common operations
+JSON (JavaScript Object Notation) is a lightweight, text-based data format that uses JavaScript
+object syntax for structuring data. It was popularized by Douglas Crockford and is widely used for
+transmitting data between a server and a client in web applications. JSON files typically have a
+.json
+ extension and use the MIME type 
+application/json
+.
+Common Operations with JSON
+1. Parsing: Transforming a JSON-formatted string into a native JavaScript object.
+const obj = JSON.parse(jsonString);
+Example:
+const jsonString = '{"name":"John","age":30}';
+const obj = JSON.parse(jsonString);  // { name: "John", age: 30 }
+2. Stringification: Converting a JavaScript object into a JSON-formatted string, commonly
+used for data transmission or storage.
+const jsonString = JSON.stringify(object);
+Example:
+const obj = { name: "Jane", age: 25 };
+const jsonString = JSON.stringify(obj);  // 
+'{"name":"Jane","age":25}'
