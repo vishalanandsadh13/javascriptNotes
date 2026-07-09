@@ -195,7 +195,150 @@ null
 The prototype chain among objects appears as below
 
 
-What is JSON and its common operations
+3. What is the Difference Between 
+call
+, 
+apply
+, and 
+bind
+In JavaScript, 
+call
+, 
+apply
+, and 
+bind
+ are methods that allow you to control the context (
+this
+ value) in
+which a function is executed. While their purposes are similar, they differ in how they handle arguments
+and when the function is invoked.
+call
+Description:
+The 
+call()
+ method invokes a function immediately, allowing you to specify the value of 
+this
+ and
+pass arguments individually (comma-separated).
+21 / 223
+JavaScript_MohitDecodes.md
+2026-05-20
+Syntax:
+func.call(thisArg, arg1, arg2, ...)
+Example:
+var employee1 = { firstName: "John", lastName: "Rodson" };
+var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+function invite(greeting1, greeting2) {
+console.log(
+greeting1 + " " + this.firstName + " " + this.lastName + ", " + 
+greeting2
+);
+}
+invite.call(employee1, "Hello", "How are you?"); // Hello John Rodson, 
+How are you?
+invite.call(employee2, "Hello", "How are you?"); // Hello Jimmy Baily, 
+How are you?
+apply
+Description:
+The 
+apply()
+ method is similar to 
+call()
+, but it takes the function arguments as an array (or
+array-like object) instead of individual arguments.
+Syntax:
+func.apply(thisArg, [argsArray])
+Example:
+var employee1 = { firstName: "John", lastName: "Rodson" };
+var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+function invite(greeting1, greeting2) {
+console.log(
+greeting1 + " " + this.firstName + " " + this.lastName + ", " + 
+greeting2
+);
+}
+invite.apply(employee1, ["Hello", "How are you?"]); // Hello John 
+Rodson, How are you?
+22 / 223
+JavaScript_MohitDecodes.md
+2026-05-20
+invite.apply(employee2, ["Hello", "How are you?"]); // Hello Jimmy 
+Baily, How are you?
+bind
+Description:
+The 
+bind()
+ method creates a new function with a specific 
+this
+ value and, optionally, preset initial
+arguments. Unlike 
+call
+ and 
+apply
+, 
+bind
+ does not immediately invoke the function; instead, it
+returns a new function that you can call later.
+Syntax:
+var boundFunc = func.bind(thisArg[, arg1[, arg2[, ...]]])
+Example:
+var employee1 = { firstName: "John", lastName: "Rodson" };
+var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+function invite(greeting1, greeting2) {
+console.log(
+greeting1 + " " + this.firstName + " " + this.lastName + ", " + 
+greeting2
+);
+}
+var inviteEmployee1 = invite.bind(employee1);
+var inviteEmployee2 = invite.bind(employee2);
+inviteEmployee1("Hello", "How are you?"); // Hello John Rodson, How 
+are you?
+inviteEmployee2("Hello", "How are you?"); // Hello Jimmy Baily, How 
+are you?
+Summary
+Method Invokes Function Immediately? How Arguments Are Passed Returns
+call
+Yes
+Comma-separated list
+Function's result
+apply
+Yes
+Array or array-like object
+Function's result
+bind
+No
+(Optional) preset, then rest
+New function
+Key Points
+23 / 223
+JavaScript_MohitDecodes.md
+2026-05-20
+call
+ and 
+apply
+ are almost interchangeable; both invoke the function immediately, but differ in
+how arguments are passed.
+Tip: "Call is for Comma-separated, Apply is for Array."
+bind
+ does not execute the function immediately. Instead, it creates a new function with the
+specified 
+this
+ value and optional arguments, which can be called later.
+Use 
+call
+ or 
+apply
+ when you want to immediately invoke a function with a specific 
+this
+ context.
+Use 
+bind
+ when you want to create a new function with a specific 
+this
+ context to be invoked later.
+ 
+4. What is JSON and its common operations
 JSON (JavaScript Object Notation) is a lightweight, text-based data format that uses JavaScript
 object syntax for structuring data. It was popularized by Douglas Crockford and is widely used for
 transmitting data between a server and a client in web applications. JSON files typically have a
@@ -216,3 +359,4 @@ Example:
 const obj = { name: "Jane", age: 25 };
 const jsonString = JSON.stringify(obj);  // 
 '{"name":"Jane","age":25}'
+
