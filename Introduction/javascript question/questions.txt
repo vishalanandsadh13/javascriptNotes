@@ -362,9 +362,7 @@ const jsonString = JSON.stringify(obj);  //
 
 
 5. What is the purpose of the array slice method
-The 
-slice()
- method in JavaScript is used to extract a section of an array, returning a new array
+The slice() method in JavaScript is used to extract a section of an array, returning a new array
 containing the selected elements. It does not modify the original array. The method takes two
 arguments:
 start: The index at which extraction begins (inclusive).
